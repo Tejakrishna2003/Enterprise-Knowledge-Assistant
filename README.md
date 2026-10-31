@@ -4,6 +4,12 @@ A secure, multi-tenant Enterprise Knowledge Assistant built with **FastAPI**, **
 
 ---
 
+## 🎥 Demo Video Walkthrough
+- **Video Link**: **[Watch Demo on YouTube](https://youtu.be/Fh7F6VeA_Wk)** (`https://youtu.be/Fh7F6VeA_Wk`)
+- **Demonstration Scope**: Document ingestion lifecycle & progress indicator, multi-document grounded retrieval, verifiable citation previews, conversational context memory, session persistence across refresh, honest missing-evidence handling, and Role-Based Access Control (RBAC) workspace isolation across both UI and API (403 Forbidden).
+
+---
+
 ## 🌟 Architecture & Key Highlights
 
 ### 1. AI Grounding & Strict Citation Validation
@@ -112,9 +118,9 @@ Open `http://localhost:5173` in your browser.
 
 ---
 
-## 🧪 Demonstration Scenarios & Script
+## 🧪 Demonstration Scenarios
 
-A complete video script is documented in [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md).
+The complete video walkthrough demonstrating these scenarios is available at: **[Watch Demo on YouTube](https://youtu.be/Fh7F6VeA_Wk)**.
 
 1. **Upload & Process Document**:
    - Open Document Library in *Engineering & Operations*.
@@ -173,7 +179,6 @@ A complete video script is documented in [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIP
 │   ├── DATABASE_DESIGN.md   # MongoDB collections, indexes, and design decisions
 │   ├── AI_DESIGN.md         # RAG pipeline, prompts, and groundedness
 │   ├── API_SPEC.md          # REST API endpoints and validation error codes
-│   ├── DEMO_SCRIPT.md       # Step-by-step video recording instructions
 │   └── VERIFICATION_NOTES.md# Test coverage and verification logs
 └── docker-compose.yml       # Local MongoDB container
 ```
