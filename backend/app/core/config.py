@@ -29,7 +29,7 @@ class Settings(BaseSettings):
     # AI Configuration
     # Supported: "gemini" | "openai" | "mock"
     AI_PROVIDER: str = "gemini"
-    AI_MODEL_NAME: str = "gemini-1.5-flash"
+    AI_MODEL_NAME: str = "gemini-3.5-flash-lite"
     GEMINI_API_KEY: str = ""
     OPENAI_API_KEY: str = ""
     GROQ_API_KEY: str = ""

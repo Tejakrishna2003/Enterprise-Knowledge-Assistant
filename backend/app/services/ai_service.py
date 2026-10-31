@@ -91,7 +91,8 @@ class AIService:
             try:
                 import google.generativeai as genai
                 genai.configure(api_key=settings.GEMINI_API_KEY.strip())
-                model = genai.GenerativeModel("gemini-1.5-flash")
+                model_name = settings.AI_MODEL_NAME if settings.AI_MODEL_NAME else "gemini-3.5-flash-lite"
+                model = genai.GenerativeModel(model_name)
                 response = await model.generate_content_async(
                     prompt,
                     generation_config={"response_mime_type": "application/json"}
