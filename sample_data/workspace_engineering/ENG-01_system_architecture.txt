@@ -1,0 +1,21 @@
+# Global Cloud Infrastructure: System Architecture & Service Specifications
+Document ID: ENG-01
+Workspace: Engineering & Operations
+Version: 3.2 | Last Updated: October 2026
+
+## Section 1: Overview and Core Services
+Our production platform operates on a distributed microservices architecture orchestrated across multiple regional clusters. The system consists of four primary internal services:
+1. API Gateway Service: Handles ingress traffic, JWT token verification, and rate limiting (port 8000).
+2. Knowledge Indexer Service: Responsible for document text extraction, metadata normalization, and semantic chunking (port 8010).
+3. Retrieval & Vector Store: Manages vector embeddings, nearest-neighbor similarity search, and workspace filtering (port 8020).
+4. Core Assistant Orchestrator: Coordinates multi-turn LLM reasoning, grounded citation validation, and response synthesis (port 8030).
+
+## Section 2: Load Balancer Configuration & Traffic Routing
+Traffic ingress is managed by an automated Layer 7 Application Load Balancer (ALB).
+- Routing Algorithm: Weighted round-robin across active healthy container pods.
+- Health Check Policy: HTTP GET `/healthz` polled at 5-second intervals. An instance is declared unhealthy after 2 consecutive 5xx responses or timeouts (>2000ms).
+- Dynamic Traffic Shifting: Supports blue-green deployment weighting with instantaneous traffic pointer switching.
+- Drain Timeout: During graceful shutdown or cluster switching, existing connections are kept alive for up to 30 seconds before termination.
+
+## Section 3: Internal Security & Service Communication
+Inter-service communication is secured via mutual TLS (mTLS) with short-lived X.509 certificates. Service-to-service calls carry cryptographically signed internal claim tokens that specify caller service identity and workspace context.

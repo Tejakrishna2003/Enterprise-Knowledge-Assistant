@@ -1,0 +1,21 @@
+# Technical Incident Response & Severity Escalation Playbook
+Document ID: ENG-02
+Workspace: Engineering & Operations
+Version: 4.1 | Last Updated: October 2026
+
+## Section 1: Severity Level Classifications
+Incidents are categorized into four standardized severity levels:
+- Severity P1 (Critical Outage): Complete outage of primary user-facing services, data loss risk, or severe security breach.
+- Severity P2 (Major Degradation): High error rate affecting >10% of users, significant performance degradation, or partial feature failure.
+- Severity P3 (Moderate Issue): Non-critical feature degradation with an available workaround.
+- Severity P4 (Minor Bug): Cosmetic bugs, minor discrepancies, or non-urgent internal issues.
+
+## Section 2: Escalation Timelines & On-Call SLAs
+When an alert fires or an incident is reported, the following mandatory escalation SLAs apply:
+- P1 Incidents: The Primary On-Call Engineer must acknowledge the alert within 15 minutes. If unacknowledged within 15 minutes, automated paging escalates to the Secondary On-Call and Engineering Director.
+- Incident Commander Assignment: Within 25 minutes of a P1 alert, the VP of Infrastructure or designated Staff Site Reliability Engineer (SRE) assumes the role of Incident Commander (IC).
+- P2 Incidents: On-call acknowledgment required within 30 minutes. Status updates posted to the internal status board every 60 minutes.
+- Stakeholder Notifications: For all P1 events, the Incident Commander must open an emergency incident bridge and send executive status updates every 30 minutes until resolution.
+
+## Section 3: Post-Mortem & Incident Retrospective Policy
+A blameless post-mortem must be scheduled within 72 hours of resolving any P1 incident. The primary on-call engineer and the Incident Commander are jointly responsible for compiling root cause analysis (RCA) and preventive action items.

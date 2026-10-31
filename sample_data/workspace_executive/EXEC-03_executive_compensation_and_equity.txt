@@ -1,0 +1,15 @@
+# Executive Compensation, Equity Vesting Schedules & Governance
+Document ID: EXEC-03
+Workspace: Executive & Finance (Confidential)
+Version: 2.0 | Classification: Strictly Confidential | Last Updated: October 2026
+
+## Section 1: Executive Equity Vesting Guidelines
+Standard executive equity grants are issued under the 2024 Long-Term Incentive Plan (LTIP):
+- Vesting Schedule: Four-year standard vesting schedule with a mandatory one-year cliff (25% vests at 12 months), followed by monthly ratable vesting over the remaining 36 months.
+- Acceleration Triggers: Single-trigger acceleration applies in the event of an involuntary termination without cause following a change-of-control transaction (e.g. merger or full company sale).
+
+## Section 2: Executive Performance Bonus Milestones
+Annual executive bonuses are tied directly to corporate KPI achievement:
+- Threshold Tier (80% bonus payout): Requires meeting minimum ARR threshold of $70M.
+- Target Tier (100% bonus payout): Requires meeting ARR of $74M and EBITDA margin > 18%.
+- Stretch Tier (150% bonus payout): Requires exceeding $80M in ARR and closing at least one strategic corporate acquisition.

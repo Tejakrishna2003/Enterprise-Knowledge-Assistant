@@ -1,0 +1,22 @@
+# Production Deployment Strategies & Automated Rollback Policy
+Document ID: ENG-03
+Workspace: Engineering & Operations
+Version: 2.8 | Last Updated: October 2026
+
+## Section 1: Blue-Green Deployment Standards
+All production deployments to our Kubernetes clusters adhere to the Blue-Green release paradigm:
+- Blue Environment: Currently serving 100% of live production traffic.
+- Green Environment: New target release version deployed and validated via automated canary tests.
+- Validation Window: The Green environment runs synthetic health assertions for 10 minutes prior to receiving production traffic.
+
+## Section 2: Automated Rollback Trigger Criteria
+The deployment pipeline continuously monitors application telemetry. An automated rollback is triggered immediately if any of the following occur during the canary or cutover phase:
+1. HTTP 5xx error rate exceeds 1.5% over any consecutive 3-minute evaluation window.
+2. 95th percentile latency (p95) increases by more than 40% compared to baseline.
+3. Health check endpoints fail on more than 20% of container pods.
+
+## Section 3: Rollback Policy and Load Balancer Interaction
+When a rollback is triggered (either automatically by telemetry alerts or manually during an active incident):
+- Traffic Pointer Switch: The Application Load Balancer (ALB) instantly redirects the 100% traffic weight pointer back to the previous stable Blue environment.
+- Connection Draining: The load balancer enforces a 30-second connection draining period on the failed Green cluster, stopping new HTTP requests while allowing in-flight requests to terminate.
+- Emergency Override Authority: If a P1 incident is declared during a live deployment, the designated Incident Commander has unilateral authority to initiate an immediate hard-cut rollback, bypassing normal drain timers to prevent further service degradation.
