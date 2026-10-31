@@ -169,6 +169,24 @@ async def seed():
 
         logger.info(f"Ingested and indexed: {spec['title']} ({len(chunks)} chunks).")
 
+    # Add a sample failed document to demonstrate failure status handling per assignment requirements
+    failed_doc = {
+        "_id": "doc_eng_failed_sample",
+        "workspace_id": "ws_engineering",
+        "title": "Corrupt Legacy Architecture Spec (broken_manual.pdf)",
+        "filename": "broken_manual.pdf",
+        "file_path": os.path.join(settings.DOCUMENTS_DIR, "broken_manual.pdf"),
+        "file_type": "application/pdf",
+        "file_size": 1024,
+        "status": "FAILED",
+        "error_message": "Invalid PDF format: file header corrupted or missing EOF marker.",
+        "chunk_count": 0,
+        "created_at": datetime.now(timezone.utc),
+        "updated_at": datetime.now(timezone.utc)
+    }
+    await db.documents.insert_one(failed_doc)
+    logger.info("Inserted sample FAILED document for error handling demonstration.")
+
     # 5. Create an initial conversation for Alice demonstrating multi-doc synthesis
     sample_conversation = {
         "_id": "conv_alice_demo_01",
